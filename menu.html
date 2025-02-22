@@ -3,373 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - epicurean bistro</title>
+    <title>Menu - Modern Eats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Modern Eats</div>
+        <ul class="nav-links">
+            <li><a href="MiniP.html">Home</a></li>
+            <li><a href="booking.html">Reservation</a></li>
+            <li><a href="menu.html">Menu</a></li>
+        </ul>
 
-    <body>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+        </div>
 
-        <header>
-            
-            <div class="header-left">
-                <button id="mode-toggle" class="mode-toggle" onclick="toggleMode()">🌙</button>
+        <div class="cart-dropdown" id="cart-dropdown">
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-total">
+                Total: ₹<span id="cart-total">0</span>
             </div>
-    
-            
-            <div class="header-center">
-                <h1>epicurean bistro</h1>
-            </div>
-    
-            
-            <div class="header-right">
-                <button id="cart-btn" class="cart-btn" onclick="openCart()">🛒 <span id="cart-count">0</span></button>
-            </div>
-        </header>
-    
-        
-        <main>
-            <h2>Our Menu</h2>
-            <div class="menu">
-                <div class="menu-item">
-                    <video src="p.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Pizza</h3>
-                    <p>INR 650.00</p>
-                    <button class="add-to-order" data-price="650" data-name="Pizza">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="b.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Burger</h3>
-                    <p>INR 370.00</p>
-                    <button class="add-to-order" data-price="370" data-name="Burger">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="s.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Salad</h3>
-                    <p>INR 550.00</p>
-                    <button class="add-to-order" data-price="550" data-name="Salad">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="ch.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Barbeque Chicken</h3>
-                    <p>INR 750.00</p>
-                    <button class="add-to-order" data-price="750" data-name="Barbeque Chicken">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="pa.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Pasta</h3>
-                    <p>INR 450.00</p>
-                    <button class="add-to-order" data-price="450" data-name="Pasta">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="co.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Coffee</h3>
-                    <p>INR 390.00</p>
-                    <button class="add-to-order" data-price="390" data-name="Coffee">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="d.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Coconut Granished Dessert</h3>
-                    <p>INR 150.00</p>
-                    <button class="add-to-order" data-price="150" data-name="Coconut Granished Dessert">Add to Order</button>
-                </div>
-
-                <div class="menu-item">
-                    <video src="sa.mp4" autoplay muted loop class="video-tile"></video>
-                    <h3>Chicken Sandwich</h3>
-                    <p>INR 250.00</p>
-                    <button class="add-to-order" data-price="250" data-name="Chicken Sandwich">Add to Order</button>
-                </div>
-
-            </div>
-        </main>
-    
-        
-        <div id="cart-modal" class="cart-modal">
-            <div class="cart-modal-content">
-                <h2>Your Cart</h2>
-                <div id="order-summary">
-                    <p>No items added yet</p>
-                </div>
-                <div id="total-amount">
-                    <p>Total: INR 0.00</p>
-                </div>
-                <button id="proceed-btn" class="proceed-btn" onclick="proceedToCheckout()">Proceed</button>
-                <button class="close-btn" onclick="closeCart()">Close</button>
+            <div class="cart-actions">
+                <button onclick="proceedToPayment()">Proceed to Payment</button>
             </div>
         </div>
+    </header>
+
+    <section class="menu">
+        <h1>Our Delicious Menu</h1>
+        <h1>Explore our range of mouth-watering dishes. Perfect for any occasion!</h1>
+
+        <div class="menu-category">
+            <h2>Indian</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Butter Chicken">
+                    <h3>Butter Chicken</h3>
+                    <p>A rich and creamy curry with tender chicken pieces.</p>
+                    <span>₹700</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Paneer Tikka">
+                    <h3>Paneer Tikka</h3>
+                    <p>Grilled marinated cottage cheese served with mint chutney.</p>
+                    <span>₹350</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Biryani">
+                    <h3>Chicken Biryani</h3>
+                    <p>Fragrant rice dish cooked with chicken, spices, and saffron.</p>
+                    <span>₹600</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Aloo Paratha">
+                    <h3>Aloo Paratha</h3>
+                    <p>Flatbread stuffed with spiced mashed potatoes.</p>
+                    <span>₹180</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Samosa">
+                    <h3>Samosa</h3>
+                    <p>Crispy pastry filled with spiced potatoes and peas.</p>
+                    <span>₹120</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Italian</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002" alt="Classic Margherita">
+                    <h3>Classic Margherita</h3>
+                    <p>A classic pizza with mozzarella cheese, fresh tomatoes, and basil.</p>
+                    <span>₹999</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3" alt="Lasagna">
+                    <h3>Lasagna</h3>
+                    <p>Layered pasta with cheese, meat sauce, and béchamel.</p>
+                    <span>₹850</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1588013273468-315fd88ea34c" alt="Spaghetti Carbonara">
+                    <h3>Spaghetti Carbonara</h3>
+                    <p>A classic Italian pasta with eggs, cheese, pancetta, and pepper.</p>
+                    <span>₹1100</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Fettuccine Alfredo">
+                    <h3>Fettuccine Alfredo</h3>
+                    <p>Creamy pasta with fettuccine noodles and parmesan cheese.</p>
+                    <span>₹950</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Ravioli">
+                    <h3>Ravioli</h3>
+                    <p>Italian dumplings filled with ricotta cheese and spinach.</p>
+                    <span>₹899</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Mexican</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47" alt="Tacos">
+                    <h3>Beef Tacos</h3>
+                    <p>Soft tortillas filled with seasoned beef and fresh toppings.</p>
+                    <span>₹450</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Burritos">
+                    <h3>Chicken Burrito</h3>
+                    <p>Wrapped tortilla with grilled chicken, rice, beans, and salsa.</p>
+                    <span>₹550</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Quesadilla">
+                    <h3>Cheese Quesadilla</h3>
+                    <p>Grilled tortilla filled with melted cheese and served with salsa.</p>
+                    <span>₹450</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Churros">
+                    <h3>Churros</h3>
+                    <p>Crispy fried dough pastry dusted with cinnamon sugar.</p>
+                    <span>₹250</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Enchiladas">
+                    <h3>Chicken Enchiladas</h3>
+                    <p>Corn tortillas rolled up and filled with spiced chicken, covered in sauce.</p>
+                    <span>₹700</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Chinese</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Spring Rolls">
+                    <h3>Spring Rolls</h3>
+                    <p>Crispy rolls filled with mixed vegetables.</p>
+                    <span>₹250</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Fried Rice">
+                    <h3>Fried Rice</h3>
+                    <p>Stir-fried rice with vegetables and soy sauce.</p>
+                    <span>₹400</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Chow Mein">
+                    <h3>Chow Mein</h3>
+                    <p>Stir-fried noodles with vegetables and your choice of meat.</p>
+                    <span>₹350</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a" alt="Sweet and Sour Chicken">
+                    <h3>Sweet and Sour Chicken</h3>
+                    <p>Chicken in a tangy sauce with bell peppers and pineapple.</p>
+                    <span>₹550</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Dim Sum">
+                    <h3>Dim Sum</h3>
+                    <p>Steamed dumplings filled with pork and vegetables.</p>
+                    <span>₹300</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>&copy; 2025 Modern Eats. All Rights Reserved.</p>
+    </footer>
+
     <style>
-        
-        * {
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease; 
-        }
-
-        
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
             background-color: #f4f4f4;
-            color: #333; 
-            transition: background-color 0.3s, color 0.3s; 
         }
-
         
         header {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: #333;
+            background: rgba(0, 0, 0, 0.9);
             color: white;
-            transition: background-color 0.3s ease;
-        }
-
-        header.light-mode {
-            background-color: #fff;
-            color: #333;
-        }
-
-        header .header-left, .header-center, .header-right {
             display: flex;
+            justify-content: space-between ;
             align-items: center;
+            padding: 15px 20px; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        h1 {
-            font-size: 2rem;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
-        
-        main {
-            padding: 20px;
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
+        .nav-links li {
+            display: inline-block;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
         }
 
-        h2.light-mode {
-            color: #333;
+        .nav-links li a:hover {
+            color: #ff6b6b;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.6rem;
+        }
+
+        .cart-icon span {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+        }
+
+        .cart-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: white;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .cart-dropdown .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-dropdown .cart-total {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .cart-actions button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4c4c;; 
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .cart-actions button:hover {
+            background-color: #333333;
         }
 
         .menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            justify-items: center;
+            padding: 40px 20px;
+        }
+
+        .menu h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-category {
+            margin-bottom: 50px;
+        }
+
+        .menu-category h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
         }
 
         .menu-item {
             background-color: white;
-            border: 1px solid #ddd;
+            width: 220px;
             border-radius: 8px;
-            padding: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            max-width: 300px;
+            padding: 10px;
+            transition: transform 0.3s ease;
         }
 
         .menu-item:hover {
             transform: scale(1.05);
-            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        
-        .video-tile {
+        .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 150px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 10px;
         }
 
-        
-        h3 {
+        .menu-item h3 {
             font-size: 1.2rem;
             margin: 10px 0;
         }
 
-        p {
-            font-size: 1rem;
+        .menu-item p {
             color: #555;
+            font-size: 0.9rem;
+            margin: 10px 0;
         }
 
-        
-        button.add-to-order {
-            background-color: #333;
+        .menu-item span {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .menu-item button {
+            background-color: #ff4c4c;; 
             color: white;
             border: none;
-            padding: 10px;
+            padding: 8px 12px;
+            font-size: 1rem;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
 
-        button.add-to-order:hover {
-            background-color: #555;
-            transform: scale(1.05);
+        .menu-item button:hover {
+            background-color: #333333;
         }
 
-        
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
+        .cart-dropdown .cart-items div {
+            color: black;
         }
-
-        .cart-modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 400px;
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
             text-align: center;
-            color: #333; 
+            padding: 1rem;
         }
 
-        .cart-modal-content.light-mode {
-            background-color: #333;
-            color: white; 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
-        #order-summary p, #total-amount p {
-            color: inherit; 
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
         }
 
-        button.proceed-btn, .close-btn {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .footer-links a:hover {
+            color: #ff6b6b;
         }
-
-        button.proceed-btn:hover, .close-btn:hover {
-            background-color: #555;
-        }
-
-        
-        .mode-toggle {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        
-        body.dark-mode {
-            background-color: #333;
-            color: white;
-        }
-
-        body.dark-mode .menu-item {
-            background-color: #444;
-            border: 1px solid #555;
-        }
-
-        body.dark-mode h2, body.dark-mode h3, body.dark-mode p {
-            color: white;
-        }
-
-        body.dark-mode button.add-to-order {
-            background-color: #555;
-        }
-
-        body.dark-mode button.add-to-order:hover {
-            background-color: #777;
-        }
-
-        body.dark-mode header {
-            background-color: #222;
-            color: white;
-        }
-
-        body.dark-mode header .header-left button.mode-toggle {
-            color: white;
-        }
-
     </style>
-</head>
-
 
     <script>
-        let isDarkMode = false;
-        let cart = [];
+         let cart = [];
+        const cartCount = document.getElementById("cart-count");
+        const cartTotal = document.getElementById("cart-total");
+        const cartItems = document.getElementById("cart-items");
+        const cartDropdown = document.getElementById("cart-dropdown");
 
-        function toggleMode() {
-            isDarkMode = !isDarkMode;
-            document.body.classList.toggle('dark-mode', isDarkMode);
-            document.querySelector('header').classList.toggle('light-mode', !isDarkMode);
-            document.querySelector('h2').classList.toggle('light-mode', !isDarkMode);
-            document.getElementById('mode-toggle').textContent = isDarkMode ? '🌙' : '☀️';
-            document.querySelector('.cart-modal-content').classList.toggle('light-mode', isDarkMode);
+        function toggleCart() {
+            cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
         }
 
-        
-        function openCart() {
-            document.getElementById('cart-modal').style.display = 'flex';
-            updateCart();
-        }
-
-        function closeCart() {
-            document.getElementById('cart-modal').style.display = 'none';
-        }
-
-        function addToOrder(itemName, itemPrice) {
+        function addToCart(itemName, itemPrice) {
             cart.push({ name: itemName, price: itemPrice });
             updateCart();
         }
 
         function updateCart() {
-            const cartCount = document.getElementById('cart-count');
-            const orderSummary = document.getElementById('order-summary');
-            const totalAmount = document.getElementById('total-amount');
-
-            if (cart.length === 0) {
-                cartCount.textContent = '0';
-                orderSummary.innerHTML = '<p>No items added yet</p>';
-                totalAmount.innerHTML = '<p>Total: INR 0.00</p>';
-            } else {
-                cartCount.textContent = cart.length;
-                let summaryHTML = '';
-                let total = 0;
-                cart.forEach(item => {
-                    summaryHTML += `<p>${item.name} - INR ${item.price}</p>`;
-                    total += item.price;
-                });
-                orderSummary.innerHTML = summaryHTML;
-                totalAmount.innerHTML = `<p>Total: INR ${total}</p>`;
-            }
+            cartCount.textContent = cart.length;
+            cartTotal.textContent = cart.reduce((sum, item) => sum + item.price, 0);
+            cartItems.innerHTML = cart.map(item => `<div>${item.name} - ₹${item.price}</div>`).join("");
         }
 
-        function proceedToCheckout() {
-            alert('Proceeding to Checkout');
+        function proceedToPayment() {
+             window.location.href='payment.html';
         }
 
-        
-        document.querySelectorAll('.add-to-order').forEach(button => {
-            button.addEventListener('click', () => {
-                const name = button.getAttribute('data-name');
-                const price = parseInt(button.getAttribute('data-price'), 10);
-                addToOrder(name, price);
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                const menuItem = this.closest(".menu-item");
+                const itemName = menuItem.querySelector("h3").textContent;
+                const itemPrice = parseInt(menuItem.querySelector("span").textContent.replace('₹', ''));
+                addToCart(itemName, itemPrice);
             });
         });
-    </script>
 
+    </script>
 </body>
 </html>
